@@ -1,33 +1,16 @@
 <template>
   <div>
-    <h1>{{ book.name }}</h1>
-    <p>Price: {{ book.price }}</p>
-    <p>Date published: {{ book.date_published }}</p>
-    <h2>Authors:</h2>
-    <ul>
-      <li v-for="(author, index) in book.author" :key="'author-' + index">
-        {{ author.name }}
-      </li>
-    </ul>
-    <h2>Chapters:</h2>
-    <ul>
-      <li v-for="(chapter, index) in book.chapters" :key="'chapters-' + index">
-        {{ chapter.name }}
-      </li>
-    </ul>
-    <router-link :to="{ name: 'booksEdit', params: { id: book.id } }">
-      Editar curso
-    </router-link>
+    <h1>Editar libro</h1>
+    {{ book }}
   </div>
 </template>
 
 <script>
 export default {
-
   data() {
     return {
-      book: {},
-    };
+      book: {}
+    }
   },
 
   created() {
@@ -50,10 +33,7 @@ export default {
         console.log(error);
       });
     }
-  },
-};
+  }
+}
 </script>
-
-<style scoped>
-
-</style>
+<style scoped></style>

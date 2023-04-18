@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 
 import BooksIndexView from '../views/books/BooksIndexView.vue';
 import BooksShowView from '../views/books/BooksShowView.vue';
+import BookEditView from '../views/books/BookEditView.vue';
 
 const routes = [
   {
@@ -27,6 +28,11 @@ const routes = [
     path: '/books/:id',
     name: 'booksShow',
     component: BooksShowView
+  },
+  {
+    path: '/books/:id/edit',
+    name: 'booksEdit',
+    component: BookEditView
   }
 ]
 
