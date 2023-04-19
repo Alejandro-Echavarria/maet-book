@@ -15,7 +15,7 @@
         {{ chapter.name }}
       </li>
     </ul>
-    <router-link :to="{ name: 'booksEdit', params: { id: book.id } }">
+    <router-link v-if="book.id" :to="{ name: 'booksEdit', params: { id: book.id } }">
       Editar curso
     </router-link>
   </div>
