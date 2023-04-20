@@ -97,7 +97,7 @@ export default {
   computed: {
     page() {
       return this.$route.query.page ?? 1;
-    }
+    },
   },
 
   watch: {
@@ -108,11 +108,11 @@ export default {
 
   methods: {
     getBooks() {
-      this.axios.get(`http://books.test/api/v1/books?perPage=10&page=${this.page}`, {
+      this.axios.get(`${process.env.VUE_APP_ROOT_API}/books?perPage=10&page=${this.page}`, {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer 4|TQgd89SFCiw92WT9PuGPcKTsWqQAP7y6wuCez0Ia'
+          'Authorization': `Bearer ${ process.env.VUE_APP_TOKEN }`
         }
       })
         .then(response => {
@@ -128,11 +128,11 @@ export default {
     },
 
     saveBook() {
-      this.axios.post('http://books.test/api/v1/books', this.book, {
+      this.axios.post(`${process.env.VUE_APP_ROOT_API}/books`, this.book, {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer 4|TQgd89SFCiw92WT9PuGPcKTsWqQAP7y6wuCez0Ia'
+          'Authorization': `Bearer ${ process.env.VUE_APP_TOKEN }`
         }
       })
         .then(response => {
@@ -142,7 +142,7 @@ export default {
             price: '',
             date_published: ''
           },
-            this.errors = []
+          this.errors = []
         })
         .catch(error => {
           this.errors = error.response.data.errors;
@@ -150,11 +150,11 @@ export default {
     },
 
     deleteBook(id) {
-      this.axios.delete(`http://books.test/api/v1/books/${id}`, {
+      this.axios.delete(`${process.env.VUE_APP_ROOT_API}/books/${id}`, {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer 4|TQgd89SFCiw92WT9PuGPcKTsWqQAP7y6wuCez0Ia'
+          'Authorization': `Bearer ${ process.env.VUE_APP_TOKEN }`
         }
       })
         .then(() => {
